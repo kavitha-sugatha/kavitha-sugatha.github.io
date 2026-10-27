@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kavitha Sugatha — Test Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --accent: #0ea5e9;
+      --accent-soft: #e0f2fe;
+      --bg: #ffffff;
+      --panel: #f8fafc;
+      --border: #e2e8f0;
+      --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.03);
+      --radius: 0.75rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f1f5f9;
+      color: var(--ink);
+      line-height: 1.5;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      border-radius: 1rem;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      padding: 32px 32px;
+      position: relative;
+    }
+
+    .sidebar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 30%, rgba(14,165,233,0.15), transparent 40%);
+      pointer-events: none;
+    }
+
+    .sidebar > * { position: relative; z-index: 1; }
+
+    .profile {
+      margin-bottom: 28px;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-soft);
+      background: #334155;
+    }
+
+    .name { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+    .name span { color: var(--accent); }
+    .role { color: #94a3b8; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 16px 0;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+    .contact-item a { color: #93c5fd; text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+    .contact-item .icon { color: var(--accent); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+    .section-title {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #94a3b8;
+      margin: 22px 0 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .skill-group { margin-bottom: 16px; }
+
+    .skill-group .label { font-weight: 700; color: #e2e8f0; font-size: 11px; margin-bottom: 4px; display: block; }
+    .skill-list { list-style: none; }
+    .skill-list li { color: #cbd5e1; font-size: 12px; margin-bottom: 3px; padding-left: 12px; position: relative; }
+    .skill-list li::before { content: "•"; color: var(--accent); font-weight: 800; position: absolute; left: 0; }
+
+    .edu-item { margin-bottom: 20px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-year { font-size: 11px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+    .edu-title { font-weight: 700; font-size: 14px; margin-top: 2px; color: #fff; }
+    .edu-school { color: #94a3b8; font-size: 12px; margin-top: 2px; font-style: italic; }
+
+    /* Main content */
+    .main { padding: 40px 52px; }
+
+    .header-band {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 30px;
+    }
+
+    .header-band h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .summary-box {
+      background: var(--panel);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 30px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .resume-section { margin-bottom: 30px; }
+    .resume-section:last-child { margin-bottom: 0; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-head h2 {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+    }
+    .section-head .sub { color: var(--muted); font-size: 12.5px; font-weight: 500; }
+    .section-head .rule { flex: 1; height: 1px; background: var(--border); margin-top: 6px; }
+
+    .job { margin-bottom: 22px; }
+    .job:last-child { margin-bottom: 0; }
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .job-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+    .job-company { color: var(--accent); font-weight: 700; font-size: 13.5px; }
+    .job-meta { color: var(--muted); font-size: 12px; font-weight: 500; white-space: nowrap; }
+    .job-loc { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+    .job ul { list-style: none; margin-top: 6px; padding-left: 0; }
+    .job li {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 5px;
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+    }
+    .job li::before { content: "–"; color: var(--accent); font-weight: 800; position: absolute; left: 0; top: 1px; }
+
+    .simple-skills {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .simple-skills li {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    footer {
+      grid-column: 1 / -1;
+      background: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 12px;
+      font-size: 10px;
+      border-top: 1px solid #1e293b;
+    }
+
+    @media (max-width: 768px) {
+      .page { grid-template-columns: 1fr; margin: 12px; border-radius: 0; }
+      .main { padding: 16px 20px; }
+      .sidebar { padding: 12px 16px; }
+      .profile { flex-direction: column; text-align: center; gap: 10px; align-items: center; }
+      .avatar { width: 48px; height: 48px; }
+      .name { font-size: 18px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { box-shadow: none; margin: 0; border-radius: 0; height: auto; min-height: auto; }
+      .sidebar::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div class="profile">
+      </div>
+
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <a href="mailto:kavitha.sugatha@gmail.com">kavitha.sugatha@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📱</span>
+        <a href="tel:+15123637451">(512) 363-7451</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">💼</span>
+        <a href="https://www.linkedin.com/in/kavitha-govindankutty-nair-sugatha-3a2473351/" target="_blank">linkedin.com/in/kavitha-vipin</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✍️</span>
+        <a href="https://medium.com/@kavitha.sugatha" target="_blank">@kavitha.sugatha</a>
+      </div>
+
+      <div class="section-title">Skills &amp; Expertise</div>
+      <div class="skill-group">
+        <span class="label">Validation &amp; Tools</span>
+        <ul class="skill-list">
+          <li>Test Case Execution · Defect Reporting · Issue Tracking</li>
+          <li>Scripting · Validation Testing · System Integration</li>
+          <li>Readiness Reviews · Android · iOS · React · AngularJS</li>
+          <li>Java · Kotlin · Flutter · Xcode · Corona SDK (Lua)</li>
+          <li>HTML · CSS · JavaScript · RESTful API integration</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Languages</div>
+      <div class="skill-group">
+        <ul class="skill-list">
+          <li>English, Malayalam, Hindi, Tamil</li>
+        </ul>
+      </div>
+
+      <div class="section-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-year">2006 – 2010</div>
+        <div class="edu-title">Bachelor of Engineering (B.E.)</div>
+        <div class="edu-school">NarayanaGuru College of Engineering – Anna University, Tamil Nadu, India</div>
+      </div>
+
+      <div class="section-title">Certifications</div>
+      <div class="edu-item">
+        <div class="edu-year">2026</div>
+        <div class="edu-title">Postgraduate Program in AI Agents &amp; Generative AI for Business Applications</div>
+        <div class="edu-school">University of Texas, Austin</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="header-band">
+        <h1>KAVITHA GOVINDANKUTTY NAIR <span>SUGATHA</span></h1>
+      </header>
+
+      <div class="summary-box">
+        Developer & Tester experienced in validation test execution across functional, performance, and integration scopes. Records test results, captures evidence, and reports defects with logs and reproduction details. Maintains systems under test, lab setups, and tooling readiness. Supports test case creation and root cause analysis with cross-functional teams. Participates in readiness reviews and execution planning.
+      </div>
+
+      <section class="resume-section" id="experience">
+        <div class="section-head">
+          <h2>Work Experience</h2>
+          <div class="rule"></div>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Sales Specialist</div>
+              <div class="job-company">Home Depot · Austin, Texas</div>
+            </div>
+              <div class="job-meta">Mar 2026 – Present</div>
+          </div>
+          <div class="job-loc">Austin, Texas</div>
+          <ul>
+            <li>Generated accurate sales quotes and product estimates based on customer needs and product availability.</li>
+            <li>Followed up with clients by phone, email, and in person to convert quotes into completed sales.</li>
+            <li>Recommended product solutions, upsold complementary items, and closed sales to meet store targets.</li>
+            <li>Maintained customer records, quote documentation, and order status updates in store systems.</li>
+            <li>Collaborated with sales associates and department leads to prioritize inquiries and delivery timelines.</li>
+            <li>Executed transaction validation with accuracy in a fast-paced environment, capturing records and flagging discrepancies promptly.</li>
+            <li>Maintained operational consistency during peak periods, supporting anomaly detection and resolution while preserving service quality.</li>
+            <li>Performed accurate transaction processing and record capture in a fast-paced retail setting.</li>
+            <li>Supported efficient shopper flow while maintaining accuracy, speed, and issue escalation when needed.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Software Developer</div>
+              <div class="job-company">UST Global · Trivandrum, Kerala, India</div>
+            </div>
+            <div class="job-meta">Mar 2016 – Apr 2018</div>
+          </div>
+          <ul>
+            <li>Built cross-platform mobile applications using AngularJS and RESTful API integrations.</li>
+            <li>Developed responsive, modular code that improved maintainability and scalability across projects.</li>
+            <li>Contributed to validation testing, defect documentation, and code reviews to improve release quality.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Android Developer</div>
+              <div class="job-company">Zayan Infotech Pvt Ltd · Kerala, India</div>
+            </div>
+            <div class="job-meta">Aug 2012 – May 2013</div>
+          </div>
+          <ul>
+            <li>Contributed to Android application development, debugging, and test execution.</li>
+            <li>Supported UI implementation and defect resolution for mobile app releases.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">System Engineer / Software Developer</div>
+              <div class="job-company">Schogini Systems Pvt Ltd · Trivandrum, Kerala, India</div>
+            </div>
+            <div class="job-meta">May 2010 – Jul 2012</div>
+          </div>
+          <ul>
+            <li>Applied validation and testing while developing interactive educational applications for pre-K and elementary learners, verifying functionality across devices.</li>
+            <li>Built mobile apps using Xcode, Android platforms, and Corona SDK (Lua).</li>
+            <li>Collaborated with cross-functional teams to deliver secure, high-performing learning tools.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Substitute Teacher (Part-time)</div>
+              <div class="job-company">Nyos Charter School · Austin, Texas</div>
+            </div>
+            <div class="job-meta">2025 – Present</div>
+          </div>
+          <div class="job-loc">Austin, Texas</div>
+          <ul>
+            <li>Delivered daily lesson plans and managed classroom instruction during teacher absences.</li>
+            <li>Maintained classroom order, student attendance, and a positive learning environment.</li>
+            <li>Supported student assignments, answered questions, and escalated concerns to school staff.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <div>
+              <div class="job-title">Assistant Teacher</div>
+              <div class="job-company">Nest at Anderson Mill · Austin, Texas</div>
+            </div>
+            <div class="job-meta">Apr 2025</div>
+          </div>
+          <div class="job-loc">Austin, Texas</div>
+          <ul>
+            <li>Supported lesson execution and maintained an organized learning environment, adhering to defined procedures.</li>
+            <li>Adapted to individual needs with patience and structured observation to keep learners engaged.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+  </div>
+</body>
+</html>
